@@ -1,13 +1,13 @@
 import React from 'react';
-import withCounter from './withCounter';
+import WithCounter from './WithCounter';
 
-const HoverCounter = ({props}) => {
+const HoverCounter = (props) => {
     const {count,incrementCount} = props;
     return (
         <div>
-            <h1>Hovered {count} times</h1>
+            <h1 onMouseOver={incrementCount}>Hovered {count} times</h1>
         </div>
     );
 };
 
-export default withCounter(HoverCounter);
+export default WithCounter(HoverCounter);

@@ -1,7 +1,7 @@
 import React from 'react';
-import withCounter from './withCounter';
+import WithCounter from './WithCounter';
 
-const ClickCounter = ({props}) => {
+const ClickCounter = (props) => {
     const {count,incrementCount} = props;
     return (
         <div>
@@ -12,4 +12,4 @@ const ClickCounter = ({props}) => {
     );
 };
 
-export default withCounter(ClickCounter);
+export default WithCounter(ClickCounter);
