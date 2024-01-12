@@ -6,7 +6,7 @@ const TaskList = ({ tasks, onChangeTask, onDeleteTask }) => {
             <ul>
                 {tasks.map((task) => (
                     <li key={task.id}>
-
+                        <Task task={task} onchange={onChangeTask} onDelete={onDeleteTask}></Task>
                     </li>
                 ))}
             </ul>
@@ -18,19 +18,28 @@ export default TaskList;
 
 // Single task
 
-function task({ task, onChange, onDelete }) {
+function Task({ task, onchange, onDelete }) {
+
     const [isEditing, setIsEditing] = useState(false);
     let taskContent;
+
     if (isEditing) {
         taskContent = (
             <>
-                <input value={task.text} onchange={(e) => {
-                    onChange({
+                <input value={task.text} onChange={(e) => {
+                    onchange({
                         ...task,
                         text: e.target.value,
                     })
                 }} />
-                <button></button>
+                <button onClick={() => setIsEditing(false)}>Save</button>
+            </>
+        )
+    } else {
+        taskContent = (
+            <>
+                {task.text}
+                <button onClick={() => setIsEditing(true)}>Edit</button>
             </>
         )
     }
